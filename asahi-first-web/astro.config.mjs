@@ -3,6 +3,5 @@ import { defineConfig } from 'astro/config';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://jussssss37.github.io',
-  base: '/asahi-first-web',
+  site: 'https://asahi-first.com',
 });
