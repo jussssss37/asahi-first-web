@@ -1,0 +1,105 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { Image } from 'astro:assets';
+import { aboutCards } from '../data/company';
+import heroImg from '../assets/images/top/hero.jpg';
+import recruitImg from '../assets/images/top/recruit.jpg';
+---
+
+<Layout title="アサヒファースト | 人材・採用支援">
+  <Header />
+
+  <main>
+    <!-- ヒーロー -->
+    <section class="hero">
+      <Image src={heroImg} alt="" class="hero__bg" aria-hidden="true" />
+      <div class="hero__overlay" aria-hidden="true"></div>
+      <div class="hero__content">
+        <p class="hero__sub">〜 一人ひとりの可能性を、最大限に 〜</p>
+        <div class="hero__accent" aria-hidden="true"></div>
+        <h1 class="hero__title">
+          あなたの「はたらく」を、<br />
+          もっと輝かせよう。
+        </h1>
+        <p class="hero__desc">
+          アサヒファーストは、求職者と企業の橋渡しを通じて、<br />
+          働く喜びと成長の機会をお届けします。<br />
+          あなたの未来に、一緒に向き合います。
+        </p>
+        <div class="hero__buttons">
+          <a href="/corporate" class="btn btn--primary btn--large">
+            人材を探す <span class="btn__arrow">→</span>
+          </a>
+          <a href="/contact" class="btn btn--outline-light btn--large">
+            お問い合わせ <span class="btn__arrow">→</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 会社紹介・理念 -->
+    <section class="about fade-in" id="about">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">ABOUT</h2>
+          <p class="section-subtitle">私たちについて</p>
+        </div>
+        <div class="about__body">
+          <div class="about__text">
+            <p>
+              アサヒファーストは、「人と企業の最良のマッチング」を使命として、日々活動しています。
+            </p>
+            <p>
+              求職者の方々のスキルや個性を大切にし、ぴったりの職場環境を見つけるお手伝いをします。
+              企業の皆様には、即戦力となる人材をスピーディにご紹介。長期的な関係を大切にしたサポートで、双方の成長に貢献します。
+            </p>
+          </div>
+          <div class="about__cards">
+            {aboutCards.map((card) => (
+              <div class="about__card">
+                <div class="about__card-icon">{card.icon}</div>
+                <h3>{card.title}</h3>
+                <p>{card.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 企業向け CTA -->
+    <section class="cta-section cta-section--recruit fade-in" id="recruit">
+      <div class="cta-section__text">
+        <h2 class="cta-section__title">人材をお探しの方</h2>
+        <p class="cta-section__desc">
+          即戦力の人材をお探しですか？<br />
+          ご要望に合わせた最適な人材をご提案します。
+        </p>
+        <a href="/corporate" class="btn btn--primary btn--large">
+          人材を探す <span class="btn__arrow">→</span>
+        </a>
+      </div>
+      <div class="cta-section__image-wrap">
+        <Image src={recruitImg} alt="人材をお探しの方" class="cta-section__image-img" />
+      </div>
+    </section>
+
+    <!-- お問い合わせ CTA -->
+    <section class="contact fade-in" id="contact">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">CONTACT</h2>
+          <p class="section-subtitle">お問い合わせ</p>
+        </div>
+        <p class="contact__desc">ご不明な点やご相談はお気軽にお問い合わせください。</p>
+        <a href="/contact" class="btn btn--dark btn--large">
+          お問い合わせ <span class="btn__arrow">→</span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>

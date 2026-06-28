@@ -1,0 +1,60 @@
+---
+---
+
+<header class="header" id="header">
+  <div class="header__inner">
+    <a href="/" class="header__logo">
+      <img src="/logo.jpg" alt="アサヒファースト" class="header__logo-img" />
+      アサヒファースト
+    </a>
+    <nav class="header__nav" id="nav">
+      <ul class="header__nav-list">
+        <li><a href="/">HOME</a></li>
+        <li><a href="/about">COMPANY</a></li>
+        <li><a href="/contact">CONTACT</a></li>
+        <li><a href="/corporate" class="nav-cta nav-cta--recruit">人材をお探しの方</a></li>
+      </ul>
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="メニューを開く">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ドロワーメニュー（モバイル） -->
+<div class="drawer" id="drawer">
+  <button class="drawer__close" id="drawerClose" aria-label="メニューを閉じる">✕</button>
+  <ul class="drawer__list">
+    <li><a href="/">HOME</a></li>
+    <li><a href="/about">COMPANY</a></li>
+    <li><a href="/contact">CONTACT</a></li>
+    <li><a href="/corporate">人材をお探しの方</a></li>
+  </ul>
+</div>
+<div class="drawer__overlay" id="drawerOverlay"></div>
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const drawer = document.getElementById('drawer');
+  const drawerOverlay = document.getElementById('drawerOverlay');
+  const drawerClose = document.getElementById('drawerClose');
+
+  function openDrawer() {
+    drawer?.classList.add('is-open');
+    drawerOverlay?.classList.add('is-open');
+  }
+
+  function closeDrawer() {
+    drawer?.classList.remove('is-open');
+    drawerOverlay?.classList.remove('is-open');
+  }
+
+  hamburger?.addEventListener('click', openDrawer);
+  drawerClose?.addEventListener('click', closeDrawer);
+  drawerOverlay?.addEventListener('click', closeDrawer);
+
+  // ドロワー内リンククリックで閉じる
+  drawer?.querySelectorAll('a').forEach((a) => {
+    a.addEventListener('click', closeDrawer);
+  });
+</script>

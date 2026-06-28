@@ -1,0 +1,106 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { Image } from 'astro:assets';
+import { company, philosophy } from '../data/company';
+import companyImg from '../assets/images/about/company.jpg';
+---
+
+<Layout
+  title="会社情報 | アサヒファースト"
+  description="アサヒファーストの経営理念・企業情報・アクセスをご案内します。"
+>
+  <Header />
+
+  <main>
+
+    <!-- ページヒーロー -->
+    <section class="page-hero">
+      <h1 class="page-hero__title">COMPANY</h1>
+      <p class="page-hero__sub">会社情報</p>
+    </section>
+
+    <!-- 経営理念 -->
+    <section class="philosophy fade-in" id="philosophy">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">PHILOSOPHY</h2>
+          <p class="section-subtitle">経営理念</p>
+        </div>
+        <div class="philosophy__body">
+          <p class="philosophy__lead">
+            <span>{philosophy.leadHighlight}</span>{philosophy.leadSuffix}
+          </p>
+          <div class="philosophy__text">
+            {philosophy.paragraphs.map((p) => <p>{p}</p>)}
+          </div>
+          <div class="philosophy__values">
+            {philosophy.values.map((v) => (
+              <div class="philosophy__value">
+                <div class="philosophy__value-icon">{v.icon}</div>
+                <h3>{v.title}</h3>
+                <p>{v.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 会社イメージ -->
+    <div class="company-image-wrap">
+      <Image src={companyImg} alt="株式会社アサヒファースト" class="company-image" />
+    </div>
+
+    <!-- 企業情報 -->
+    <section class="company-info fade-in" id="company-info">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">COMPANY INFO</h2>
+          <p class="section-subtitle">企業情報</p>
+        </div>
+        <table class="company-table">
+          <tbody>
+            <tr>
+              <th>会社名</th>
+              <td>{company.name}</td>
+            </tr>
+            <tr>
+              <th>代表者</th>
+              <td>{company.ceo}</td>
+            </tr>
+            <tr>
+              <th>所在地</th>
+              <td>〒{company.zip} {company.address}</td>
+            </tr>
+            <tr>
+              <th>電話番号</th>
+              <td>{company.tel}</td>
+            </tr>
+            <tr>
+              <th>設立</th>
+              <td>{company.founded}</td>
+            </tr>
+            <tr>
+              <th>資本金</th>
+              <td>{company.capital}</td>
+            </tr>
+            <tr>
+              <th>業務内容</th>
+              <td>{company.services}</td>
+            </tr>
+            <tr>
+              <th>許可番号</th>
+              <td>{company.licenses}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+
+  </main>
+
+  <Footer />
+</Layout>

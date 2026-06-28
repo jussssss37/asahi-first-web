@@ -1,0 +1,125 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout
+  title="お問い合わせ | アサヒファースト"
+  description="アサヒファーストへのお問い合わせはこちらから。人材派遣に関するご相談をお気軽にどうぞ。"
+>
+  <Header />
+
+  <main>
+
+    <!-- ページヒーロー -->
+    <section class="page-hero">
+      <h1 class="page-hero__title">CONTACT</h1>
+      <p class="page-hero__sub">お問い合わせ</p>
+    </section>
+
+    <!-- フォームセクション -->
+    <section class="contact-form-section fade-in">
+      <div class="container">
+        <div class="contact-form-section__lead">
+          <p>ご不明な点やご相談はお気軽にお問い合わせください。</p>
+        </div>
+
+        <div class="contact-form-wrap">
+          <form class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+
+            <!-- Web3Forms設定 -->
+            <input type="hidden" name="access_key" value="075c6067-6ba5-4980-b3c7-c3ca9e476300" />
+            <input type="hidden" name="subject" value="アサヒファーストへのお問い合わせ" />
+            <!-- ハニーポット（スパム対策） -->
+            <input type="checkbox" name="botcheck" style="display:none" />
+
+            <div class="contact-form__field">
+              <label class="contact-form__label" for="name">
+                お名前 <span class="contact-form__required">必須</span>
+              </label>
+              <input
+                class="contact-form__input"
+                type="text"
+                id="name"
+                name="name"
+                placeholder="例）山田 太郎"
+                required
+              />
+            </div>
+
+            <div class="contact-form__field">
+              <label class="contact-form__label" for="email">
+                メールアドレス <span class="contact-form__required">必須</span>
+              </label>
+              <input
+                class="contact-form__input"
+                type="email"
+                id="email"
+                name="email"
+                placeholder="例）example@email.com"
+                required
+              />
+            </div>
+
+            <div class="contact-form__field">
+              <label class="contact-form__label" for="tel">
+                電話番号 <span class="contact-form__optional">任意</span>
+              </label>
+              <input
+                class="contact-form__input"
+                type="tel"
+                id="tel"
+                name="tel"
+                placeholder="例）080-1234-5678"
+              />
+            </div>
+
+            <div class="contact-form__field">
+              <label class="contact-form__label" for="message">
+                お問い合わせ内容 <span class="contact-form__required">必須</span>
+              </label>
+              <textarea
+                class="contact-form__textarea"
+                id="message"
+                name="message"
+                rows="6"
+                placeholder="お問い合わせ内容をご記入ください"
+                required
+              ></textarea>
+            </div>
+
+            <div class="contact-form__submit">
+              <button type="submit" class="btn btn--primary btn--large">
+                送信する <span class="btn__arrow">→</span>
+              </button>
+            </div>
+
+          </form>
+        </div>
+
+        <!-- 電話でのお問い合わせ -->
+        <div class="contact-tel-wrap fade-in">
+          <p class="contact-tel__label">お電話でのお問い合わせ</p>
+          <a href="tel:08056325458" class="contact-tel__number">080-5632-5458</a>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <Footer />
+</Layout>
+
+<script>
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) entry.target.classList.add('is-visible');
+      });
+    },
+    { threshold: 0.1 }
+  );
+  document.querySelectorAll('.fade-in').forEach((el) => observer.observe(el));
+</script>
