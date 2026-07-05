@@ -6,7 +6,7 @@ export const company = {
   ceo: "喜多 実輝",
   zip: "532-0013",
   address: "大阪府大阪市此花区西九条1-6-15",
-  tel: "080-5632-5458",
+  tel: "08048862577",
   founded: "2024年3月",
   capital: "2,000万円",
   services: "労働者派遣事業",
