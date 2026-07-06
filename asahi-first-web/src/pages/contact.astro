@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import { company } from '../data/company';
 ---
 
 <Layout
@@ -102,7 +103,7 @@ import Footer from '../components/Footer.astro';
         <!-- 電話でのお問い合わせ -->
         <div class="contact-tel-wrap fade-in">
           <p class="contact-tel__label">お電話でのお問い合わせ</p>
-          <a href="tel:08056325458" class="contact-tel__number">080-5632-5458</a>
+          <a href={`tel:${company.tel.replace(/-/g, '')}`} class="contact-tel__number">{company.tel}</a>
         </div>
 
       </div>
